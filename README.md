@@ -15,10 +15,15 @@ represented by a first and last name (two strings) and a unique id (integer).
 The eight funds that each account have are as follows:
 
   0: Money Market 5: Capital Value Fund
+  
   1: Prime Money Market 6: Growth Equity Fund
+  
   2: Long-Term Bond 7: Growth Index Fund
+  
   3: Short-Term Bond
+  
   4: 500 Index Fund
+  
   
 All client accounts are opened with an open transaction, O (see below).
 
@@ -26,12 +31,18 @@ Transactions:
   There are five types of transactions and each are identified by a character beginning the line.
   
   O: Open a client account and instantiate eight funds with 0 assets each
+  
   D: Deposit assets into a fund
+  
   W: Withdraw assets from a fund
+  
   T: Transfer assets between funds (can be funds owned by a single client or
   transfers between clients)
+  
   A: Display the history of all transactions for a client account
+  
   F: Display the history for all transactions of a given fund
+  
   
   The format for the commands consists of a transaction type (above), followed by an account id,
   fund id, and amount. For transfers the from account and fund comes before to account and
@@ -40,12 +51,19 @@ Transactions:
 Examples:
 
   D 1234 1 100     Deposit $100 into the prime money market account of client ID 1234
+  
   W 1234 0 500     Withdraw $500 from the money market of client ID 1234.
+  
   T 1234 0 1234 1 1000     Transfer $1000 from client 1234's money market to the prime money market.
+  
   T 1234 0 5678 0 1000     Transfer $1000 from 1234's money market to 5678's money market.
+  
   A 1234     Display the history of all transactions of all accounts for client 1234.
+  
   F 1234 4     Display the history for all transactions on the 500 Index Fund for client 1234
+  
   O 6537 Bowden Charles     Open an account for client Charles Bowden. Use account id 6537.
+  
 Errors:
 
   As noted above, assume the format (number and types of input items) are correct. However,
@@ -57,7 +75,9 @@ Errors:
 Examples of errors which may occur:
 
   W 6543 6 10000 (when the Gowth Equity fund of client 6543 has only $20)
+  
   D 7654 76 1000
+  
   A transaction that would cause a balance to become negative should not occur and is an error
   (A withdrawal or transfer of $0 is fine). There is one exception to this rule: if you are
   withdrawing from a money market fund with insufficient dollars, and it can be covered with
